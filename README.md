@@ -1,2 +1,2 @@
-# Dont-Miss-It
+# Better-Than-Telly
 Netflix for events

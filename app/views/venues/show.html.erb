@@ -1,0 +1,48 @@
+<div class="row">
+<div class="col-12">
+    <h1><%= @venue.name %></h1>
+    <p><%= @venue.address %></p>
+</div>
+</div>
+
+<div class="flex-container">
+    <div>
+    <h2>Upcoming Events at this venue</h2>
+    </div>
+
+    <div class="block-container">
+        <% if !@venue.events.empty? && @venue.future_events? %>
+            <% @venue.events.each do |event|  %>
+                <% if event.event_in_future? %>
+                    <p><%= link_to event.title, event_path(event) %> </p>
+                <% end %>
+            <% end %>
+        <% else %>
+            <h4>No events coming up! <%= link_to "Make one?", new_event_path %></h4>
+        <% end %>
+    
+        
+    </div>
+
+</div>
+
+<hr>
+<div class="flex-container">
+
+    <div>
+    <h2>Previous events at this venue</h2>
+    </div>
+
+    <div class="block-container">
+    <% if !@venue.events.empty? && @venue.future_events? %>  
+        <% @venue.events.each do |event|  %>
+            <% if !event.event_in_future? %>
+                <p><%= link_to event.title, event_path(event) %> </p>
+            <% end %>
+        <% end %>
+    <% else %>
+        <h4>No previous events!</h4>
+    <% end %>
+    </div>
+
+</div>

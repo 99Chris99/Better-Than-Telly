@@ -1,0 +1,220 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+ /* NAV */
+
+ .nav{
+     background-color: #333447; 
+    /* background-color: hsla(0, 100%, 40%, 0.3); */
+    margin: 0;
+    text-align: center;
+    
+ }
+
+ .nav li {
+     display:inline;
+ }
+
+ .nav p, .nav a {
+     display: inline-block;
+     font-weight: 500;
+     color: white;
+     text-decoration: none;
+ }
+
+ .nav a:hover {
+    animation-duration: 1s;
+    animation-name: navhover;
+    animation-iteration-count: infinite;
+ }
+
+ @keyframes navhover {
+    from {
+        color: #dfe3f0;
+    }
+
+    to {
+        color: #e83f5e;
+    }
+ }
+
+ /* CONTAINERS */
+
+ .flex-container {
+    width: 99%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 10px;
+ }
+
+ .grid-container {
+     display: inline-grid;
+     grid-template: auto;
+ }
+
+ .star-rating {
+     display: inline-flex;
+     flex-wrap: no-wrap;
+     justify-content: flex-start;
+     width: 50px;
+     line-height: .9em;
+ }
+
+ .block-container {
+    display: inline-block;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+    padding: 10px;
+    margin: 10px;
+    justify-content: space-evenly;
+    min-height: 200px;
+    width: 53%;
+    border: 5px solid black;
+    max-width: 400px;
+ }
+
+ .select-container:hover {
+    animation-duration: 1s;
+    animation-name: selecthover;
+    animation-fill-mode: forwards;
+ }
+
+ @keyframes selecthover {
+    from {
+        background-color: white;
+    }
+
+    to {
+        background-color:#dfe3f0;
+    }
+ }
+
+ .title-container {
+    display: inline-block;
+    align-self: flex-start;
+    margin-right: 0;
+ }
+
+ .edit-box a {
+    background-color:  #333447;
+    width: 250px;
+    height: 50px;
+    font-size: 0.85em;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+ }
+
+ 
+ .flash-warnings {
+    border: 3px solid #e83f5e;
+    color: #e83f5e;
+    padding: 16px 32px;
+    position: relative;
+    display: block;
+    right: 50px;
+    height: auto;
+ }
+
+
+/*  FORMS  */ 
+ input {
+    background-color:  #333447;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+.select {
+    background-color: #333447;
+    color: white;
+    padding: 16px 32px;
+    cursor: pointer;
+    height: 50px;
+    -webkit-appearance: none;
+   
+}
+
+textfield {
+    display: inline-block;
+    width: 300px;
+}
+
+textarea {
+    width: 300px;
+    height: 150px;
+    background-color:  #333447;
+    border: none;
+    color: white;
+    margin: 4px;
+    padding: 16px;
+}
+
+.easteregg {  /*  ☺  */
+    position: relative;
+    display: relative;
+}
+
+.easteregg:hover {
+    display: none;
+}
+
+input[type=submit]:hover {
+    background-color: blueviolet;
+}
+
+
+/* FONTS */
+
+
+a.buttonlink {
+    background-color:  #333447;
+    border: none;
+    color: white;
+    font-size: 12px;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+h1#logo a {
+    text-shadow: -5px 5px #fff;
+    text-decoration: none;
+    position: relative;
+}
+
+h1#logo a:hover {
+    color: #e83f5e;
+    animation-name: navhover;
+    animation-iteration-count: infinite;
+}
+
+p.review-date {
+    font-size: .75em;
+}
+

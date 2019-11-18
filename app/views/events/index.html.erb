@@ -1,0 +1,27 @@
+
+<div class="row">
+    <div class="col-12">
+        <h1>Events</h1>
+        <p>
+        <%= form_tag events_path, method: :get do  %>
+        <%= collection_select(:cat_search, :name, Category.all, :name, :name, {:selected => @events[1], include_blank: 'All Categories'}, {class: "select"})  %>
+        <%= submit_tag ("Filter by category") %>
+        <% end %>
+        
+        </p>
+
+    </div>
+</div>
+
+
+<div class="flex-container">
+    <% @events[0].each do |event| %>
+        <div class="block-container select-container">
+            <h2><%= link_to event.title, event_path(event) %></h2>
+            <h4><%= event.event_date.strftime("%A %-d %B %Y") %></h4>
+        </div>
+    <% end %>
+</div>
+
+     
+

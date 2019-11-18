@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-12">
+  <h1>Create an event</h1>
+  </div>
+</div>
+
+<div class="flex-container">
+
+<% if !logged_in? %>
+<h2>Please <%= link_to "log in", login_path %> to create an event</h2>
+<% else %>
+<div class="block-container">
+    <%= form_for(@event) do |f| %>
+        
+        <%= f.hidden_field :user_id, :value=> session[:user_id] %>
+       
+       <h4> <%= f.label :title %> </h4>
+         <p><%= f.text_field :title %>  </p>
+
+       
+       <h4> <%= f.label :event_date %> </h4>
+        <p> <%= f.date_field :event_date %> </p>
+
+       
+        <h4><%= f.label :event_time %></h4>
+         <p><%= f.time_field :event_time %> </p>
+
+        
+       <h4> <%= f.label :venue %></h4>
+       <p> <%= f.collection_select :venue_id, Venue.all, :id, :name, {include_blank: 'Please choose a venue'}, {:class=>"select"} %>
+        </p>
+
+        
+        <h4><%= f.label :description %></h4>
+        <p><%= f.text_area :description %></p>
+
+        
+        <h4><%= f.label :category %></h4>
+       <p> <%= f.collection_select :category_id, Category.all, :id, :name, {include_blank: 'Please choose a category'}, {:class=>"select"} %>
+        </p>
+
+    <%= f.submit %>
+<% end %>
+  </div>
+<% end %>
+
+
+  <% flash.each do |name, messages| %>
+    <div class="flash-warnings">
+      <% messages.each do |message| %>
+       <p><%= message %></p>
+    <% end %>
+    </div>
+  <% end %>

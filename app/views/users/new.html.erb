@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-12">
+   <h1>Sign up to BetterThanTelly</h1>
+  </div>
+</div>
+
+
+<div class="flex-container">
+  <div class="block-container">
+  <%= form_for(@user) do |f| %>
+      <h4>Name: <%= f.text_field :name %></h4>
+      <h4>Email: <%= f.email_field :email %></h4>
+      <h4>Password: <%= f.password_field :password %></h4>
+      <h4>Confirm your password: <%= f.password_field :password_confirmation %></h4>
+      <%= f.submit %>
+  <% end %>
+    </div>
+
+  <div>
+    <h2>Already have an account?</h2>
+    <p><%= link_to "Sign in!", login_path, { :class=> "buttonlink"} %></p>
+
+  <% flash.each do |name, messages| %>
+      <div class="flash-warnings">    
+        <% messages.each do |message| %>
+          <h4>  <%= message %> </h4>
+        <% end %>
+        </div>
+        <% end %>
+  </div>
+
+</div>
+

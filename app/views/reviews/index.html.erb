@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-12">
+        <h1>Reviews</h1>
+    </div>
+</div>
+
+
+<div class="flex-container">
+    <% @reviews.each do |review| %>
+        <div class="block-container select-container">    
+        <h2>"<%= link_to review.title, review_path(review) %>"</h2>
+        <p><%= link_to review.event.title, review_path(review) %></p>
+        </div>
+    <% end %>
+</div>

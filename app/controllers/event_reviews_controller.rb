@@ -1,0 +1,2 @@
+class EventReviewsController < ApplicationController
+end

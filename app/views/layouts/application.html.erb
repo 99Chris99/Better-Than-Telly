@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BetterThanTelly</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'simple-grid', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  
+<!--  <div class="flex-container"> -->
+    <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <h1 id="logo"><%= link_to "BetterThanTelly", root_path %></h1>
+    </div>
+     <div class="col-4"></div>
+</div>
+
+  <div class="row">
+    <ul class="nav">
+      <li><p><%= link_to "Events", events_path %>  |  </p></li>
+      <li><p><%= link_to "Venues", venues_path %>  |  </p></li>
+      <li><p><%= link_to "Reviews", reviews_path %>  |  </p></li>
+      <li><p><%= link_to "Categories", categories_path %>  |  </p></li>
+    <% if logged_in? %>
+      <li><p><%= link_to "Create event", new_event_path %>  |  </p></li>
+      <li><p><%= link_to "Leave review", new_review_path %>  |  </p></li>
+      <li><p><%= link_to "Your profile", user_path(session[:user_id]) %>  |  </p></li>
+      <li><p><%= link_to "Logout", logout_path, method: :post %></p></li>
+    <% else %>
+      <li><p><%= link_to "Log in", login_path %>  </p></li>
+      <li><p> or <%= link_to "Sign up", new_user_path %></p></li>
+    <% end %>
+    </ul>
+  </div>
+
+    <%= yield %>
+
+   <!-- </div> CONTAINER -->
+  </body>
+</html>

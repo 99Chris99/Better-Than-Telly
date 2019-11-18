@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-12">
+        <h1>Welcome to your user homepage, <%= @user.name %></h1>
+        <p><%= link_to "Edit your account", edit_user_path(@user), { :class=> "buttonlink"} %></p>
+    </div>
+</div>
+
+<div class="flex-container">
+    <div class="title-container">
+    <h2>Future Events you are going to</h4>
+    </div>
+        <div class="block-container">
+        <% if @future_events == []  %>
+            <p>You're not going to any events. <%= link_to "Find something to attend!", events_path %></p> 
+         <% else %>
+        <% @future_events.each do |event|  %>
+            <p><%= link_to event.title, event_path(event) %></p>
+        <% end %>
+        <% end %>
+         </div>
+</div>
+
+<hr>
+<div class="flex-container">
+    <h2>Future Events you are hosting</h4>
+    
+    <div class="block-container">
+    <% if @hosting_future == []  %>
+        <p>You're not hosting any events. <%= link_to "Host an event!", new_event_path %></p>
+    <% else %>
+        <% @hosting_future.each do |event|  %>
+            <p><%= link_to event.title, event_path(event) %></p>
+        <% end %>
+    <% end %>
+    </div>
+</div>
+
+<hr>
+
+<div class="flex-container">
+    <h2>Past events you have attended</h4>
+    <div class="block-container">
+    <% if @past_events == []  %>
+        <p>You have not attended any events.</p>
+    <% else %>
+                <% @past_events.each do |event|  %>
+                <p><%= link_to event.title, event_path(event) %>
+                    <% if !event.reviews.find_by(:user_id==session[:user_id]) %><p>
+                      <%= link_to "Leave review ⤴", new_review_path, { :class=> "buttonlink"} %>
+                    <% end %>
+                </p>
+                <% end %>
+    <% end %>
+    </div>
+    </div>
+
+<hr>
+
+<div class="flex-container">
+<h2>Past events you have hosted</h4>
+
+    <div class="block-container">
+    <% if @hosting_past == []  %>
+       <p> You have not hosted any events </p>
+    <% else %>
+        <% @hosting_past.each do |event|  %>
+        <p><%= link_to event.title, event_path(event) %></p>
+        <% if Review.find_by(:event_id=>event.id) %>
+           <p><%= link_to "See reviews ⤴", reviews_path(:event_id=>event.id), { :class=> "buttonlink"}  %></p>
+        <% end %>
+    <% end %>
+    <% end %>
+    </div>
+</div>
+
+
+<hr>
+<div class="flex-container">
+<h2>Recommended events for you</h2>
+    <div class="block-container">
+    <!-- logic stuff here -->
+    <% @user.reccomend_me.each do |event| %>
+
+        <p><%= link_to Event.find(event).title, event_path(event) %></p>
+    
+    <% end %>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+

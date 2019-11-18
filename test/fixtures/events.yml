@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  event_date: 2019-09-09
+  event_time: 2019-09-09 09:43:29
+  descripton: MyString
+  category: one
+  venue: one
+  user: one
+
+two:
+  title: MyString
+  event_date: 2019-09-09
+  event_time: 2019-09-09 09:43:29
+  descripton: MyString
+  category: two
+  venue: two
+  user: two

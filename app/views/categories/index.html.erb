@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-12">
+        <h1>Categories</h1>
+    </div>
+</div>
+
+<div class="flex-container">
+    <% @categories.each do |category| %>
+       <div class="block-container select-container"> 
+       <h2> <%= link_to category.name, category_path(category) %></h2>
+       </div>
+    <% end %>
+</div>

@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-12">
+      <h1>Editing "<%= @event.title %>"</h1>
+    </div>
+</div>
+
+<div class="flex-container">
+
+<div class="block-container">
+    <%= form_for(@event) do |f| %>
+        
+        <%= f.hidden_field :user_id, :value=> session[:user_id] %>
+       <h4> <%= f.label :title %></h4>
+        <%= f.text_field :title %>  
+
+      <h4> <%= f.label :event_date %> </h4>
+        <%= f.date_field :event_date %> 
+
+      <h4> <%= f.label :event_time %> </h4>
+        <%= f.time_field :event_time %>
+
+       <h4> <%= f.label :venue %> </h4>
+        <%= f.collection_select :venue_id, Venue.all, :id, :name, {include_blank: 'Please choose a venue'}, {:class=>"select"} %>
+
+       <h4><%= f.label :description %> </h4>
+        <%= f.text_area :description %>
+
+      <h4> <%= f.label :category %> </h4> 
+        <%= f.collection_select :category_id, Category.all, :id, :name, {include_blank: 'Please choose a category'}, {:class=>"select"} %>
+    <br><br>
+
+    <%= f.submit %>
+<% end %>
+
+</div>
+
+ <% flash.each do |name, messages| %>
+      <div class="flash-warnings">
+      <% messages.each do |message| %>
+       <p> <%= message %> </p>
+      <% end %>
+      </div>
+    <% end %>
+
+</div>
+  

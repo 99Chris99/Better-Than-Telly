@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-12">
+        <h1 id="event-name"><%= @event.title %></h1>
+        <p><%= @event.description %></p>
+    </div>
+</div>
+
+<div class="flex-container">
+<div class="block-container">
+    <div>
+        <h4>Hosted by: <%= @event.user.name %></h4>
+        <h4>Category: <%= link_to @event.category.name, category_path(@event.category) %></h4>
+    </div>
+
+    <div>
+        <% if @event.event_in_future? && @event.user.id == session[:user_id] %>
+            <p>This is your event!</p>
+            <p><%= link_to "Edit this event", edit_event_path, { :class=>"buttonlink"} %></p>  
+        <% elsif @event.event_in_future? && @event.users.find_by(id: session[:user_id]) %>
+            <p>You're going to this event!</p>
+        <% elsif @event.event_in_future? && @event.user.id != @current_user.id %>
+
+        <%= button_to 'Attend this event', {:controller => "event_attendees", :action => "create", :event_id => @event.id, :user_id=> session[:user_id]}, :method=>:post  %>
+        <% elsif !@event.event_in_future? %>
+            <h4>See reviews:</h4>
+            <% @event.reviews.each do |review| %>
+            <hr>
+            <div class="star-rating">
+                <% review.rating.times do  %>
+                <h4> &#9734; </h4> 
+                <% end %>
+            </div>
+            <p>"<%= link_to review.title, review_path(review) %>"</p>
+            <hr>
+        
+            <% end %>
+        <% else %>
+            :)
+        <% end %>
+
+    </div>
+</div>
+
+<div class="block-container">
+    <div>
+        <h4>Location:</h4>
+        <p><%= link_to @event.venue.name, venue_path(@event.venue) %></p>
+        <p><%= @event.venue.address %></p>
+    </div>
+
+    <div>
+        <h4>Date</h4>
+        <p><%= @event.event_date.strftime("%A %-d %B %Y") %></p>
+
+        <h4>Time</h4>
+        <p><%= @event.event_time.strftime("%H:%M") %></p>
+    </div>
+</div>
+
+
+
+</div>

@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-12">
+    <h1>Edit <%= @review.title %></h1>
+  </div>
+</div>
+
+<div class="flex-container">
+  <div class="block-container">
+    <%= form_for(@review) do |f| %>     
+     <h4> <%= f.label :title %> </h4>
+      <%= f.text_field :title %>  
+
+      <h4><%= f.label :content %></h4>
+      <%= f.text_area :content %> 
+      
+      <h4><%= f.label :rating %> </h4>
+      <%= f.number_field :rating %>
+    <%= f.submit %>
+    <% end %>
+  
+
+  <h4>Delete review?</h4>
+  <p><%= link_to 'Delete review', @review, { method: 'delete', data: {confirm: 'Are you sure?'}, :class=>"buttonlink" } %></p>
+  </div>
+</div>

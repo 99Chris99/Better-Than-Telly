@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+# Better-Than-Telly
+Netflix for events
+>>>>>>> e85f98b4bced682fc03e6cffc4045fdb535ef32d

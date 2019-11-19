@@ -20,6 +20,7 @@ body {
   /* background-color: #f2f0eb;  #d9dfd1 */
   background: #f2f0eb url('/assets/bg-faded2.png')no-repeat left top;
   background: #f2f0eb url('../images/bg-faded2.png')no-repeat left top;
+  
 }
 
 /* ROOT FONT STYLES */
